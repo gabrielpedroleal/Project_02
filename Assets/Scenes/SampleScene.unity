@@ -52553,6 +52553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   speed: 5
   runSpeed: 8
+  rollSpeed: 10
 --- !u!50 &2014609638
 Rigidbody2D:
   serializedVersion: 5

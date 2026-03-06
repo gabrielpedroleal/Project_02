@@ -5,11 +5,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
+    [SerializeField] private float rollSpeed;
 
     private Rigidbody2D rig;
 
     private float initialSpeed;
     private bool _isRunning;
+    private bool _isRolling;
     private Vector2 _direction;
 
     public Vector2 direction
@@ -24,6 +26,12 @@ public class Player : MonoBehaviour
         set { _isRunning = value; }
     }
 
+    public bool isRolling 
+    {
+        get { return _isRolling; }
+        set { _isRolling = value; }
+    }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -34,6 +42,7 @@ public class Player : MonoBehaviour
     {
         OnInput();
         OnRun();
+        OnRolling();
     }
 
     private void FixedUpdate()
@@ -67,5 +76,24 @@ public class Player : MonoBehaviour
             _isRunning = false;
         }
     }
+
+
+    private void OnRolling()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            speed = rollSpeed;
+            _isRolling = true;
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            speed = initialSpeed;
+            _isRolling = false;
+        }
+        {
+            
+        }
+    }
+
     #endregion
 }
